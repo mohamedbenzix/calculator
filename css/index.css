@@ -1,0 +1,176 @@
+/* ----------------------------------- *\
+              VARIABLES
+\* ----------------------------------- */
+:root{
+  --body-color: #0a0a0c;
+  --bg-color: linear-gradient(to top, #222 70%, #353535);
+  --text-primary: #eee;
+  --text-secondary: #888;
+  --f-color: #f34;
+  --shadow: none;
+  --n: 255;
+}
+.light:root{
+  --body-color: #f8f8f8;
+  --bg-color: linear-gradient(to top, #fff 70%, #ddd);
+  --text-primary: #111;
+  --text-secondary: #aaa;
+  --f-color: #3f4;
+  --shadow: 0 0 8px 4px #ccc;
+  --n: 0;
+}
+
+
+
+
+/* ----------------------------------- *\
+              GLOBAL STYLES
+\* ----------------------------------- */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  font-family: 'Segoe UI';
+  transition: all .2s;
+}
+body{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--body-color);
+}
+button, input{
+  border: none;
+  outline: none;
+  user-select: none;
+}
+
+
+/* ----------------------------------- *\
+               CALCULATOR
+\* ----------------------------------- */
+
+.calculator{
+  width: 300px;
+  height: 550px;
+  background: var(--bg-color);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+
+
+
+/* ----------------------------------- *\
+              TOGGLE MODE
+\* ----------------------------------- */
+#switch{
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 40px;
+  height: 40px;
+  background: var(--text-primary);
+  border-radius: 50%;
+  z-index: 100;
+}
+
+
+
+
+
+
+
+
+/* ----------------------------------- *\
+                 SHOW
+\* ----------------------------------- */
+#show{
+  height: 200px;
+  border-bottom: .5px solid var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding:10px 10px;
+}
+#show #display{
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 38px;
+}
+#show #res{
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 26px;
+}
+
+
+
+/* ----------------------------------- *\
+                KEYS
+\* ----------------------------------- */
+
+.keys{
+  transition: all .3s;
+  width: 575px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.normal-keys, .special-keys{
+  width: fit-content;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 13px;
+}
+.normal-keys .btn, .special-keys .btn{
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  font-size: 24px;
+  background: transparent;
+  color: var(--text-primary);
+  transition: all .01s;
+  white-space: nowrap;
+}
+.normal-keys .btn.t{
+  color: var(--text-secondary);
+}
+.normal-keys .btn.p{
+  background: var(--body-color);
+  font-size: 26px;
+}
+.normal-keys .btn.e{
+  background: var(--f-color);
+}
+.normal-keys .btn:active, .special-keys .btn:active{
+  background: rgba(var(--n), var(--n), var(--n), .2);
+}
+
+.calculator #changeKeys{
+  background: var(--f-color);
+  color: var(--text-primary);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  padding: 4px;
+  border-radius: 10px;
+  height: 100%;
+  font-weight: 700;
+  font-size: 26px;
+}
+
+/*
+.special-keys {
+  position: absolute;
+  left: 100%;
+  bottom: 5px;
+}
